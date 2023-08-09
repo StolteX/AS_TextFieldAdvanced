@@ -118,6 +118,11 @@ V1.26
 	-BugFixes
 V1.27
 	-BugFixes
+V1.28
+	-Multiline TextFields supports now the clear button
+	-The action button have now a fixed HeightWidth = 24dip
+V1.29
+	-BugFixes
 #End If
 
 #DesignerProperty: Key: Mode, DisplayName: Mode, FieldType: String, DefaultValue: TextField, List: TextField|Button|Multiline
@@ -469,7 +474,7 @@ Private Sub IniProps(Props As Map)
 	m_KeyboardType = Props.Get("KeyboardType")
 	m_PasswordField = IIf(m_Mode = "TextField",Props.Get("PasswordField"),False)
 	m_ShowRevealButton = IIf(m_Mode = "TextField",Props.Get("ShowRevealButton"),False)
-	m_ShowClearButton = IIf(m_Mode = "Multiline",False, Props.Get("ShowClearButton"))
+	m_ShowClearButton = Props.Get("ShowClearButton")
 	
 	
 	m_ClearAndRevealButtonColor = xui.PaintOrColorToColor(Props.GetDefault("ClearAndRevealButtonColor",0x00FFFFFF))
@@ -558,10 +563,9 @@ Private Sub Base_Resize (Width As Double, Height As Double)
 		DrawPasswordStrengthIndicator
 	End If
   
-	Dim ActionButtonsWidth As Float = xpnl_TextFieldBackground.Height/2
-  
-	xlbl_ClearButton.SetLayoutAnimated(0,Width - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap - ActionButtonsWidth - ActionButtonGap,0,ActionButtonsWidth,xpnl_TextFieldBackground.Height)
+	Dim ActionButtonsWidth As Float = 24dip'xpnl_TextFieldBackground.Height/2
 	
+	xlbl_ClearButton.SetLayoutAnimated(0,Width - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap - ActionButtonsWidth - ActionButtonGap,0,ActionButtonsWidth,xpnl_TextFieldBackground.Height)
 	xlbl_RevealButton.SetLayoutAnimated(0,Width - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap*IIf(m_ShowClearButton,3,1) - ActionButtonsWidth*IIf(m_ShowClearButton,2,1),0,ActionButtonsWidth,xpnl_TextFieldBackground.Height)
   
 	xlbl_Prefix.SetLayoutAnimated(0,TextFieldLeft,0,MeasureTextWidth(xlbl_Prefix.Text,xlbl_Prefix.Font) + g_Prefix.Gap,xpnl_TextFieldBackground.Height)
@@ -588,7 +592,7 @@ Private Sub Base_Resize (Width As Double, Height As Double)
 		xlbl_Hint.As(Label).SizeToFit
 		#End If	
 		
-		xlbl_ClearButton.Visible = False
+		'xlbl_ClearButton.Visible = False
 		xlbl_Prefix.Visible = False
 		xlbl_RevealButton.Visible = False
 		xlbl_Suffix.Visible = False
@@ -805,7 +809,7 @@ Public Sub setButtonText(Text As String)
 	If Text.Length > 0 Then
 		xlbl_Hint.Visible = False
 	Else
-		xlbl_Hint.Visible = True
+		xlbl_Hint.Visible = g_Hint.Visible
 	End If
 	TextChanged(Text)
 End Sub
@@ -987,7 +991,7 @@ Public Sub setText(Text As String)
 	If Text.Length > 0 Then
 		xlbl_Hint.Visible = False
 	Else
-		xlbl_Hint.Visible = True
+		xlbl_Hint.Visible = g_Hint.Visible
 	End If
 	TextChanged(Text)
 End Sub
@@ -1063,7 +1067,7 @@ End Sub
 #End If
 
 Private Sub TextChanged(Text As String)
-	if m_isViewReady = False then Return
+	If m_isViewReady = False Then Return
 	If m_Mask<>"None" And (m_MaskText.Contains("X") Or m_MaskText.Contains("0"))  Then
 		Dim textMasked As String = applyMask(Text, m_MaskText, m_Mask)
 		If Text <> textMasked Then
@@ -1169,10 +1173,11 @@ End Sub
 
 Private Sub ClearButton_Click
 	If m_ReadOnly Then Return
-	TextChanged("")
 	If xtf_TextField.IsInitialized Then xtf_TextField.Text = ""
 	If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.Text = ""
+	If xtf_Multiline.IsInitialized Then xtf_Multiline.Text = ""
 	xlbl_ButtonText.Text = ""
+	TextChanged("")
 	ClearButtonClick
 End Sub
 
