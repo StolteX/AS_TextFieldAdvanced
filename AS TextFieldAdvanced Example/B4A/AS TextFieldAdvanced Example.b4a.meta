@@ -10,6 +10,6 @@ ModuleClosedNodes0=6
 ModuleClosedNodes1=
 ModuleClosedNodes2=1
 ModuleClosedNodes3=1
-NavigationStack=AS_TextFieldAdvanced,xtf_TextField_TextChanged,860,0,AS_TextFieldAdvanced,getTextFull,860,0,B4XMainPage,B4XPage_Created,48,6,B4XMainPage,AS_TextFieldAdvanced_2_TextChanged,50,0,Visual Designer,frm_main.bal,-100,6,B4XMainPage,Class_Globals,12,0,AS_TextFieldAdvanced,IniProps,437,0,AS_TextFieldAdvanced,HideDisplayMissingField,665,0,AS_TextFieldAdvanced,setMaskText,669,6,AS_TextFieldAdvanced,getMaskText,670,4
+NavigationStack=B4XMainPage,B4XPage_Created,48,6,AS_TextFieldAdvanced,Focus,716,5,AS_TextFieldAdvanced,Style,716,0,AS_TextFieldAdvanced,xtf_TextField_TextChanged,1160,0,AS_TextFieldAdvanced,GetRealTextLength,1162,6,AS_TextFieldAdvanced,TextChanged,1174,3,AS_TextFieldAdvanced,Class_Globals,315,6,AS_TextFieldAdvanced,setReadOnly,866,6,Visual Designer,frm_main.bal,-100,4,AS_TextFieldAdvanced,getLeadingWidth,866,0
 SelectedBuild=0
 VisibleModules=2,1

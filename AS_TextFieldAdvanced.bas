@@ -123,9 +123,64 @@ V1.28
 	-The action button have now a fixed HeightWidth = 24dip
 V1.29
 	-BugFixes
+V1.30
+	-Add get and set LeadingWidth
+	-Add get and set TrailingWidth
+V1.31
+	-B4A BugFix
+V1.32
+	-Add Designer Property CounterTextColor
+		-Default: White
+	-Add Designer Property InfoTextColor
+		-Default: White
+V1.33
+	-Add Designer Property Underline - A line is visible on the textfield
+		-Default: False
+		-If true the ShapeColor ist used for this underline
+	-Add get UnderlinePanel
+V1.34
+	-BugFix - If ShowRevealButton = True and PasswordField = False - Then the gap was still present at the end of the textfield
+V1.35
+	-BugFix - if you set the Counter or CounterMax, then one emoji is now counting as one
+V1.36
+	-BugFix - The hint text was only renewed if the TextField had no text
+	-B4I BugFix - Readonly on Multiline did not work
+V1.37
+	-B4I BugFix - Readonly on Multiline did not work
+V1.38
+	-Breaking Change - ButtonText and ButtonText2 have been removed and now work with .Text and .Text2
+		-It confuses me every time, especially when I don't know that it's a button
+	-A few functions have been made private as they should not be public
+	-Button Mode BugFixes
+	-Add Mode "ComboBox"
+	-Add Event ComboBoxSelectedIndexChanged
+	-Add set SetItems
+	-Add get and set SelectedIndex
+V1.39
+	-BugFixes
+V1.40
+	-Add get and set TopGap -Same as LeftGap
+		-Default: 0
+V1.41
+	-BugFixes
+	-Add Designer Property TitleMode
+		-Default: Default - Above textfield
+		-FloatText - Floating animation like in the B4XFloatTextField
+		-BeforeTextField - Show the title before the textfield
+	-Add get and set TitleWidth - Works only if the TitleMode is set to BeforeTextField. The Text width of the title
+	-Add set TitleWidthAll - Sets the width value for all textfields on the parent
+	-Add HorizontalAlignment to the ASTextFieldAdvanced_Title type
+		-Default: LEFT
+	-Add get and set Underline - Show or hide the underline programmatically
+	-Add IndexOf - ComboBox - Returns the index of the item with the given value. Returns -1 if not found.
+	-Add get ComboBox - Gets the B4XComboBox
+	-Add OpenComboBox
+	-Add Event TitleClick
+V1.42 (nicht öffentlich)
+	-BugFixes
 #End If
 
-#DesignerProperty: Key: Mode, DisplayName: Mode, FieldType: String, DefaultValue: TextField, List: TextField|Button|Multiline
+#DesignerProperty: Key: Mode, DisplayName: Mode, FieldType: String, DefaultValue: TextField, List: TextField|Button|Multiline|ComboBox
 #DesignerProperty: Key: TextAlignment, DisplayName: TextAlignment, FieldType: String, DefaultValue: Left, List: Left|Center|Right
 #DesignerProperty: Key: TextFieldCornerRadius, DisplayName: TextFieldCornerRadius, FieldType: Int, DefaultValue: 5, MinRange: 0
 #DesignerProperty: Key: ReadOnly, DisplayName: Read Only, FieldType: Boolean, DefaultValue: False
@@ -141,6 +196,7 @@ V1.29
 #DesignerProperty: Key: ShowRevealButton, DisplayName: Show Reveal Button, FieldType: Boolean, DefaultValue: True, Description: Example of a boolean property.
 #DesignerProperty: Key: StrengthIndicator, DisplayName: StrengthIndicator, FieldType: String, DefaultValue: None, List: None|Line|Segmented ,Description: Password strength indicator
 
+#DesignerProperty: Key: Underline, DisplayName: Underline, FieldType: Boolean, DefaultValue: False, Description: If true the ShapeColor ist used for this underline
 #DesignerProperty: Key: FocusedShapeColor, DisplayName: FocusedShapeColor, FieldType: Color, DefaultValue: 0x00FFFFFF
 #DesignerProperty: Key: NonFocusedShapeColor, DisplayName: NonFocusedShapeColor, FieldType: Color, DefaultValue: 0x00FFFFFF
 #DesignerProperty: Key: FocusedHintTextColor, DisplayName: Focused Hint Text Color, FieldType: Color, DefaultValue: 0xFFFFFFFF, Description: You can use the built-in color picker to find the color values.
@@ -151,9 +207,11 @@ V1.29
 #DesignerProperty: Key: Hint, DisplayName: Hint, FieldType: Boolean, DefaultValue: True
 #DesignerProperty: Key: HintText, DisplayName: Hint Text, FieldType: String, DefaultValue: Hint
 
+#DesignerProperty: Key: TitleMode, DisplayName: TitleMode, FieldType: String, DefaultValue: Default, List: Default|FloatText|BeforeTextField
 #DesignerProperty: Key: Title, DisplayName: Title, FieldType: Boolean, DefaultValue: True, Description: If True a title is visible on top.
 #DesignerProperty: Key: TitleText, DisplayName: Title Text, FieldType: String, DefaultValue: Title
 #DesignerProperty: Key: TitleHeight, DisplayName: Title Height, FieldType: Int, DefaultValue: 30, MinRange: 0, Description: Height in DIP
+#DesignerProperty: Key: TitleWidth, DisplayName: Title Width, FieldType: Int, DefaultValue: 100, MinRange: 0, Description: Works only if the TitleMode is set to BeforeTextField. The Text width of the title
 #DesignerProperty: Key: FocusedTitleTextColor, DisplayName: Title Focused Text Color, FieldType: Color, DefaultValue: 0xFFFFFFFF, Description: You can use the built-in color picker to find the color values.
 #DesignerProperty: Key: NonFocusedTitleTextColor, DisplayName: Title Non Focused Text Color, FieldType: Color, DefaultValue: 0xFFFFFFFF, Description: You can use the built-in color picker to find the color values.
 
@@ -161,9 +219,11 @@ V1.29
 
 #DesignerProperty: Key: Counter, DisplayName: Counter, FieldType: Boolean, DefaultValue: False, Description: If True a counter is visible on bottom right
 #DesignerProperty: Key: CounterMax, DisplayName: Counter Max, FieldType: Int, DefaultValue: 20, MinRange: 0, Description: 5/10
+#DesignerProperty: Key: CounterTextColor, DisplayName: Counter Text Color, FieldType: Color, DefaultValue: 0xFFFFFFFF
 
 #DesignerProperty: Key: Info, DisplayName: Info, FieldType: Boolean, DefaultValue: False, Description: If True a info text is visible on bottom left
 #DesignerProperty: Key: InfoText, DisplayName: Info Text, FieldType: String, DefaultValue: Informations, Description: Display your info text
+#DesignerProperty: Key: InfoTextColor, DisplayName: Info Text Color, FieldType: Color, DefaultValue: 0xFFFFFFFF
 
 #If B4J
 #DesignerProperty: Key: ToolTipText, DisplayName: Tool Tip Text, FieldType: String, DefaultValue: 
@@ -181,18 +241,20 @@ V1.29
 #DesignerProperty: Key: Mask, DisplayName: Mask, FieldType: String, DefaultValue: None, List: None|Left|Right, Description: Where to start the mask.
 #DesignerProperty: Key: MaskText, DisplayName: MaskText, FieldType: String, DefaultValue: XXX.XXX.XXX-XX, Description: Mask format use X or 0 to indicate the characters that will be replaced.
 
-#Event: TextChanged(Text As String)
 #Event: ButtonClick
-#Event: FocusChanged (HasFocus As Boolean)
-#Event: EnterPressed
-#Event: PasswordRevealChanged (Revealed As Boolean)
-#Event: LeadingIconClick
-#Event: TrailingIconClick
 #Event: ClearButtonClick
+#Event: ComboBoxSelectedIndexChanged(Index As Int)
+#Event: EnterPressed
+#Event: FocusChanged(HasFocus As Boolean)
+#Event: LeadingIconClick
+#Event: PasswordRevealChanged(Revealed As Boolean)
+#Event: TextChanged(Text As String)
+#Event: TitleClick
+#Event: TrailingIconClick
 
 Sub Class_Globals
 	
-	Type ASTextFieldAdvanced_Title(Visible As Boolean,Text As String,Height As Float,IgnoreProperties As Boolean,xFont As B4XFont,FocusedTextColor As Int,NonFocusedTextColor As Int,View As ASTextFieldAdvanced_ViewTitle)
+	Type ASTextFieldAdvanced_Title(Visible As Boolean,Text As String,Height As Float,IgnoreProperties As Boolean,xFont As B4XFont,FocusedTextColor As Int,NonFocusedTextColor As Int,HorizontalAlignment As String,View As ASTextFieldAdvanced_ViewTitle)
 	Type ASTextFieldAdvanced_Information(Visible As Boolean,Text As String,IgnoreProperties As Boolean,xFont As B4XFont,TextColor As Int,View As ASTextFieldAdvanced_ViewInformation)
 	Type ASTextFieldAdvanced_Counter(Visible As Boolean,CounterMax As Int,IgnoreProperties As Boolean,xFont As B4XFont,TextColor As Int,View As ASTextFieldAdvanced_ViewCounter)
 	Type ASTextFieldAdvanced_Hint(Visible As Boolean,Text As String,IgnoreProperties As Boolean,FocusedTextColor As Int,NonFocusedTextColor As Int,xFont As B4XFont,View As ASTextFieldAdvanced_ViewHint)
@@ -230,10 +292,13 @@ Sub Class_Globals
 	Private xtf_TextField As B4XView
 	Private xtf_TextFieldPassword As B4XView
 	Private xtf_Multiline As B4XView
+	Private xcb_ComboBox As AS_ComboBoxIntern
 	Private xlbl_Hint As B4XView
+	Private xlbl_FloatingHintTitle As B4XView
 	Private xlbl_ClearButton As B4XView
 	Private xlbl_RevealButton As B4XView
 	Private xpnl_PasswordStrengthBackground As B4XView
+	Private xpnl_Underline As B4XView
 	
 	Private xlbl_InternPreProperties As B4XView
 	
@@ -254,6 +319,9 @@ Sub Class_Globals
 	Private xlbl_Prefix As B4XView
 	Private xlbl_Suffix As B4XView
 	
+	Private m_CustomLeadingWidth As Float
+	Private m_CustomTrailingWidth As Float
+	
 	Private m_Mode As String
 	
 	Private m_BackgroundColor As Int
@@ -264,12 +332,16 @@ Sub Class_Globals
 	Private m_ReadOnly As Boolean = False
 	Private m_TextAlignment As String
 	Private m_IgnoreTextChangeEvent As Boolean = False
+	Private m_TitleWidth As Float
 	
 	Private m_ClearAndRevealButtonColor As Int
 	Private m_TextColor As Int
 	Private m_StrengthIndicator As String
 	Private m_RequiredField As Boolean
 	Private m_RequiredFieldColor As Int
+	Private m_Underline As Boolean
+	Private m_TitleMode As String
+
 	
 	Private m_Mask As String
 	Private m_MaskText As String
@@ -280,16 +352,27 @@ Sub Class_Globals
 	Private m_ToolTipText As String
 	#End If
 	
+		#if B4A
+	Private IME As IME
+	#End If
+	
 	Private m_LeftGap As Float = 10dip
+	Private m_TopGap As Float = 0dip
 	Private m_HasFocus As Boolean = False
 	Private m_isPasswordMode As Boolean = False
 	Private m_isInRequiredMode As Boolean = False
 	Private m_isViewReady As Boolean = False
+	Private bc As ByteConverter
+	Private m_OldText As String = ""
+	Private m_LastToHint As Boolean = False
 End Sub
 
 Public Sub Initialize (Callback As Object, EventName As String)
 	mEventName = EventName
 	mCallBack = Callback
+		#if B4A
+	IME.Initialize("ime")
+	#end if
 End Sub
 
 'Base type must be Object
@@ -312,9 +395,9 @@ Public Sub DesignerCreateView (Base As Object, Lbl As Label, Props As Map)
 
 	CreateTextFields
 	
-	xpnl_TextFieldBackground.AddView(xlbl_ButtonText,m_LeftGap,0,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height)
+	xpnl_TextFieldBackground.AddView(xlbl_ButtonText,m_LeftGap,m_TopGap,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height - m_TopGap*2)
 	
-	xpnl_TextFieldBackground.AddView(xlbl_Hint,m_LeftGap,0,xpnl_TextFieldBackground.Width,xpnl_TextFieldBackground.Height)
+	xpnl_TextFieldBackground.AddView(xlbl_Hint,m_LeftGap,m_TopGap,xpnl_TextFieldBackground.Width,xpnl_TextFieldBackground.Height - m_TopGap*2)
 
 	xpnl_TextFieldBackground.AddView(xlbl_ClearButton,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,0,xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height)
 
@@ -322,24 +405,29 @@ Public Sub DesignerCreateView (Base As Object, Lbl As Label, Props As Map)
 
 	mBase.AddView(xlbl_Title,0,0,mBase.Width,20dip)
 	mBase.AddView(xlbl_TitleReqiredField,0,0,mBase.Width,20dip)
+	mBase.AddView(xpnl_Underline,0,mBase.Height,mBase.Width,2dip)
+	xpnl_Underline.Visible = m_Underline
 	
 	mBase.AddView(xlbl_Counter,0,0,mBase.Width/2,20dip)
 
 	mBase.AddView(xlbl_Info,0,0,mBase.Width/2,20dip)
-
-	xpnl_TextFieldBackground.SetColorAndBorder(m_BackgroundColor,g_TextFieldProperties.BorderWidth,IIf(m_HasFocus,g_TextFieldProperties.FocusedShapeColor,g_TextFieldProperties.NonFocusedShapeColor),g_TextFieldProperties.CornerRadius)
-
+	
+	UpdateTextFieldShape
 
 	'ButtonText Options
-	xlbl_ButtonText.Color = xui.Color_Transparent
+	If m_Mode = "ComboBox" Then
+		xlbl_ButtonText.Color = xpnl_TextFieldBackground.Color
+	Else
+		xlbl_ButtonText.Color = xui.Color_Transparent
+	End If
 	xlbl_ButtonText.TextColor = Lbl.As(B4XView).TextColor
 	xlbl_ButtonText.Font = Lbl.As(B4XView).Font
 	xlbl_ButtonText.SetTextAlignment("CENTER",m_TextAlignment)
-
 	'Hint Options
 	g_Hint.xFont = Lbl.As(B4XView).Font
 	xlbl_Hint.Color = xui.Color_Transparent
 	xlbl_Hint.SetTextAlignment("CENTER",m_TextAlignment)
+	xlbl_Hint.Visible = g_Hint.Visible
 
 	'ClearButton Options
 	xlbl_ClearButton.Visible = False
@@ -378,20 +466,37 @@ Public Sub DesignerCreateView (Base As Object, Lbl As Label, Props As Map)
 	
 	Style
 	
+	If xlbl_InternPreProperties.Text <> "" Then setText(xlbl_InternPreProperties.Text)
+	
 	#If B4A
 	Base_Resize(mBase.Width,mBase.Height)
 	#End If
 
-Sleep(0)
+	Sleep(0)
 	m_isViewReady = True
 
+End Sub
+
+Private Sub UpdateTextFieldShape
+	xpnl_Underline.Visible = m_Underline
+	If m_Underline Then
+		xpnl_Underline.Color = IIf(m_HasFocus,g_TextFieldProperties.FocusedShapeColor,g_TextFieldProperties.NonFocusedShapeColor)
+		xpnl_TextFieldBackground.SetColorAndBorder(m_BackgroundColor,0,0,g_TextFieldProperties.CornerRadius)
+	Else
+		xpnl_TextFieldBackground.SetColorAndBorder(m_BackgroundColor,g_TextFieldProperties.BorderWidth,IIf(m_HasFocus,g_TextFieldProperties.FocusedShapeColor,g_TextFieldProperties.NonFocusedShapeColor),g_TextFieldProperties.CornerRadius)
+	End If
+	
+	If m_Mode = "ComboBox" Then
+		xlbl_ButtonText.Color = xpnl_TextFieldBackground.Color
+	End If
+	
 End Sub
 
 Private Sub CreateTextFields
 	
 	If m_Mode = "TextField" Then
 		xtf_TextField = CreateTextField(False)
-		xpnl_TextFieldBackground.AddView(xtf_TextField,m_LeftGap,0,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height)
+		xpnl_TextFieldBackground.AddView(xtf_TextField,m_LeftGap,m_TopGap,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height - m_TopGap*2)
 		
 		'TextField Options
 		xtf_TextField.Color = xui.Color_Transparent
@@ -404,7 +509,7 @@ Private Sub CreateTextFields
 	
 	If m_Mode = "TextField" And m_isPasswordMode Then
 		xtf_TextFieldPassword = CreateTextField(True)
-		xpnl_TextFieldBackground.AddView(xtf_TextFieldPassword,m_LeftGap,0,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height)
+		xpnl_TextFieldBackground.AddView(xtf_TextFieldPassword,m_LeftGap,m_TopGap,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height - m_TopGap*2)
 		
 		'TextFieldPassword Options
 		xtf_TextFieldPassword.Color = xui.Color_Transparent
@@ -426,7 +531,7 @@ Private Sub CreateTextFields
 	
 	If m_Mode = "Multiline" Then
 		xtf_Multiline = IIf(xui.IsB4A,CreateTextField(False),CreateMultineTextField)
-		xpnl_TextFieldBackground.AddView(xtf_Multiline,m_LeftGap,0,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height)
+		xpnl_TextFieldBackground.AddView(xtf_Multiline,m_LeftGap,m_TopGap,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height - m_TopGap*2)
 		
 		'MultilineTextField Options
 		xtf_Multiline.Color = xui.Color_Transparent
@@ -446,6 +551,31 @@ Private Sub CreateTextFields
 		xlbl_ButtonText.Visible = False
 	End If
 	
+	If m_Mode = "ComboBox" Then
+		Dim xpnl_ComboBoxBackground As B4XView = xui.CreatePanel("")
+		xpnl_TextFieldBackground.AddView(xpnl_ComboBoxBackground,m_LeftGap,m_TopGap,xpnl_TextFieldBackground.Width - xpnl_TextFieldBackground.Height,xpnl_TextFieldBackground.Height - m_TopGap*2)
+		Dim lbl_ComboBox As B4XView = CreateLabel("")	
+		xcb_ComboBox.Initialize(Me,"xcb_ComboBox")
+		xcb_ComboBox.DesignerCreateView(xpnl_ComboBoxBackground,lbl_ComboBox,CreateMap())		
+		xcb_ComboBox.SetItems(Array As String(""))
+		#If B4A
+		xcb_ComboBox.cmbBox.Visible = False
+		#End If
+		#If B4I
+		SetButtonTextColor(xcb_ComboBox.mBtn,xui.Color_Transparent,0)
+		#End If
+	End If
+	
+	xlbl_FloatingHintTitle = CreateLabel("")
+	
+	If m_TitleMode = "FloatText" Then
+		#If B4J
+		xlbl_FloatingHintTitle.As(JavaObject).RunMethod("setMouseTransparent", Array(True))
+		#End If
+		mBase.AddView(xlbl_FloatingHintTitle,m_LeftGap,m_TopGap,xpnl_TextFieldBackground.Width,xpnl_TextFieldBackground.Height - m_TopGap*2)
+		RefreshFloatingHint
+	End If
+	
 	If m_ReadOnly Then setReadOnly(m_ReadOnly)
 	
 End Sub
@@ -455,7 +585,7 @@ Private Sub IniProps(Props As Map)
 	xlbl_Hint = CreateLabel("")
 	xlbl_Info = CreateLabel("")
 	xlbl_Counter = CreateLabel("")
-	xlbl_Title = CreateLabel("")
+	xlbl_Title = CreateLabel("xlbl_Title")
 	xlbl_TitleReqiredField = CreateLabel("")
 	xpnl_LeadingIcon = xui.CreatePanel("xpnl_LeadingIcon")
 	xiv_LeadingIcon = CreateImageView("")
@@ -466,6 +596,7 @@ Private Sub IniProps(Props As Map)
 	xlbl_ClearButton = CreateLabel("xlbl_ClearButton")
 	xlbl_RevealButton = CreateLabel("xlbl_RevealButton")
 	xlbl_ButtonText = CreateLabel("xlbl_ButtonText")
+	xpnl_Underline = xui.CreatePanel("")
 	
 	m_Mode = Props.Get("Mode")
 	m_ReadOnly = Props.GetDefault("ReadOnly",False)
@@ -475,6 +606,8 @@ Private Sub IniProps(Props As Map)
 	m_PasswordField = IIf(m_Mode = "TextField",Props.Get("PasswordField"),False)
 	m_ShowRevealButton = IIf(m_Mode = "TextField",Props.Get("ShowRevealButton"),False)
 	m_ShowClearButton = Props.Get("ShowClearButton")
+	m_Underline = Props.GetDefault("Underline",False)
+	m_TitleMode = Props.GetDefault("TitleMode","Default")
 	
 	
 	m_ClearAndRevealButtonColor = xui.PaintOrColorToColor(Props.GetDefault("ClearAndRevealButtonColor",0x00FFFFFF))
@@ -496,10 +629,12 @@ Private Sub IniProps(Props As Map)
 	m_ToolTipText = Props.Get("ToolTipText")
 	#End If
 	
-	g_Title = CreateASTextFieldAdvanced_Title(Props.Get("Title"),Props.Get("TitleText"),DipToCurrent(Props.Get("TitleHeight")),False,xui.CreateDefaultBoldFont(15),xui.PaintOrColorToColor(Props.GetDefault("FocusedTitleTextColor",xui.Color_White)),xui.PaintOrColorToColor(Props.GetDefault("NonFocusedTitleTextColor",xui.Color_White)),CreateASTextFieldAdvanced_ViewTitle(xlbl_Title))
-	g_Hint = CreateASTextFieldAdvanced_Hint(Props.Get("Hint"),Props.Get("HintText"),False,xui.PaintOrColorToColor(Props.Get("FocusedHintTextColor")),xui.PaintOrColorToColor(Props.Get("NonFocusedHintTextColor")),xui.CreateDefaultFont(12),CreateASTextFieldAdvanced_ViewHint(xlbl_Hint))
-	g_Information = CreateASTextFieldAdvanced_Information(Props.Get("Info"),Props.Get("InfoText"),False,xui.CreateDefaultFont(13),xui.Color_White,CreateASTextFieldAdvanced_ViewInformation(xlbl_Info))
-	g_Counter = CreateASTextFieldAdvanced_Counter(Props.Get("Counter"),Props.Get("CounterMax"),False,xui.CreateDefaultFont(13),xui.Color_White,CreateASTextFieldAdvanced_ViewCounter(xlbl_Counter))
+	m_TitleWidth = IIf(Props.ContainsKey("TitleWidth"),DipToCurrent(Props.Get("TitleWidth")),100dip)
+	
+	g_Title = CreateASTextFieldAdvanced_Title(Props.Get("Title"),Props.Get("TitleText"),DipToCurrent(Props.Get("TitleHeight")),False,xui.CreateDefaultBoldFont(15),xui.PaintOrColorToColor(Props.GetDefault("FocusedTitleTextColor",xui.Color_White)),xui.PaintOrColorToColor(Props.GetDefault("NonFocusedTitleTextColor",xui.Color_White)),"LEFT",CreateASTextFieldAdvanced_ViewTitle(xlbl_Title))
+	g_Hint = CreateASTextFieldAdvanced_Hint(Props.Get("Hint") And m_Mode <> "ComboBox",Props.Get("HintText"),False,xui.PaintOrColorToColor(Props.Get("FocusedHintTextColor")),xui.PaintOrColorToColor(Props.Get("NonFocusedHintTextColor")),xui.CreateDefaultFont(12),CreateASTextFieldAdvanced_ViewHint(xlbl_Hint))
+	g_Information = CreateASTextFieldAdvanced_Information(Props.Get("Info"),Props.Get("InfoText"),False,xui.CreateDefaultFont(13),xui.PaintOrColorToColor(Props.GetDefault("InfoTextColor",xui.Color_White)),CreateASTextFieldAdvanced_ViewInformation(xlbl_Info))
+	g_Counter = CreateASTextFieldAdvanced_Counter(Props.Get("Counter"),Props.Get("CounterMax"),False,xui.CreateDefaultFont(13),xui.PaintOrColorToColor(Props.GetDefault("CounterTextColor",xui.Color_White)),CreateASTextFieldAdvanced_ViewCounter(xlbl_Counter))
 	g_LeadingIcon = CreateASTextFieldAdvanced_LeadingIcon(Props.GetDefault("LeadingIcon",False),Null,CreateASTextFieldAdvanced_ViewLeadingIcon(xpnl_LeadingIcon,xiv_LeadingIcon))
 	g_TrailingIcon = CreateASTextFieldAdvanced_TrailingIcon(Props.GetDefault("TrailingIcon",False),Null,CreateASTextFieldAdvanced_ViewTrailingIcon(xpnl_TrailingIcon,xiv_TrailingIcon))
 	g_Prefix = CreateASTextFieldAdvanced_Prefix(Props.GetDefault("Prefix",False),Props.GetDefault("PrefixText","$"),False,xui.CreateDefaultFont(20),xui.Color_ARGB(100,255,255,255),5dip,CreateASTextFieldAdvanced_ViewPrefixSuffix(xlbl_Prefix))
@@ -520,7 +655,7 @@ Private Sub Base_Resize (Width As Double, Height As Double)
 	xlbl_Suffix.Visible = g_Suffix.Visible
   
 	Dim TextFieldHeight As Float = Height
-	If g_Title.Visible Then
+	If g_Title.Visible And m_TitleMode <> "BeforeTextField" Then
 		TextFieldHeight = Height - g_Title.Height
 	End If
 	
@@ -534,60 +669,77 @@ Private Sub Base_Resize (Width As Double, Height As Double)
   
 	Dim ActionButtonGap As Float = 5dip
   
-	Dim TextFieldLeft As Float = 0
-	If g_LeadingIcon.Visible Then TextFieldLeft = TextFieldHeight
-	
-	Dim TextFieldWidth As Float = Width
-	If g_LeadingIcon.Visible Then TextFieldWidth = TextFieldWidth - TextFieldHeight
-	If g_TrailingIcon.Visible Then TextFieldWidth = TextFieldWidth - TextFieldHeight
+	Dim TextFieldTop As Float
+	Dim TextFieldLeft As Float
+	Dim TextFieldWidth As Float
+	If m_TitleMode = "BeforeTextField" Then
+		TextFieldTop = 0
+		TextFieldLeft = m_TitleWidth
+		TextFieldWidth = Width - m_TitleWidth
+	Else
+		TextFieldTop = IIf(g_Title.Visible,g_Title.Height,0)
+		TextFieldLeft = 0
+		TextFieldWidth = Width
+	End If
   
-	xpnl_LeadingIcon.SetLayoutAnimated(0,0,0,TextFieldHeight,TextFieldHeight)
-	xpnl_TrailingIcon.SetLayoutAnimated(0,Width - TextFieldHeight,0,TextFieldHeight,TextFieldHeight)
+	xpnl_LeadingIcon.SetLayoutAnimated(0,0,m_TopGap,IIf(m_CustomLeadingWidth = 0,TextFieldHeight,m_CustomLeadingWidth),TextFieldHeight - m_TopGap*2)
+	xpnl_TrailingIcon.SetLayoutAnimated(0,TextFieldWidth - TextFieldHeight,m_TopGap,IIf(m_CustomTrailingWidth = 0,TextFieldHeight,m_CustomTrailingWidth),TextFieldHeight - m_TopGap*2)
   
-	Dim IconWidthHeight As Float = xpnl_LeadingIcon.Width/2
-  
-	xiv_LeadingIcon.SetLayoutAnimated(0,xpnl_LeadingIcon.Width/2 - IconWidthHeight/2,xpnl_LeadingIcon.Width/2 - IconWidthHeight/2,IconWidthHeight,IconWidthHeight)
-	xiv_TrailingIcon.SetLayoutAnimated(0,xpnl_LeadingIcon.Width/2 - IconWidthHeight/2,xpnl_LeadingIcon.Width/2 - IconWidthHeight/2,IconWidthHeight,IconWidthHeight)
-  
-	If g_LeadingIcon.Icon <> Null And g_LeadingIcon.Icon.IsInitialized = True Then setLeadingIcon2(g_LeadingIcon.Icon)
-	If g_TrailingIcon.Icon <> Null And g_TrailingIcon.Icon.IsInitialized = True Then setTrailingIcon2(g_TrailingIcon.Icon)
-  
-	xpnl_TextFieldBackground.SetLayoutAnimated(0,0,IIf(g_Title.Visible,g_Title.Height,0),Width,TextFieldHeight)
-	xlbl_Title.SetLayoutAnimated(0,0,0,Width,g_Title.Height)
-	xlbl_TitleReqiredField.SetLayoutAnimated(0,MeasureTextWidth(xlbl_Title.Text,xlbl_Title.Font),0,MeasureTextWidth(xlbl_TitleReqiredField.Text,xlbl_TitleReqiredField.Font),xlbl_TitleReqiredField.Height)
+	xpnl_TextFieldBackground.SetLayoutAnimated(0,TextFieldLeft,TextFieldTop,TextFieldWidth,TextFieldHeight)
+	xlbl_Title.SetLayoutAnimated(0,0,0,IIf(m_TitleMode = "BeforeTextField",m_TitleWidth,Width),IIf(m_TitleMode = "BeforeTextField",TextFieldHeight,g_Title.Height))
+	xlbl_TitleReqiredField.SetLayoutAnimated(0,MeasureTextWidth(xlbl_Title.Text,xlbl_Title.Font),0,MeasureTextWidth(xlbl_TitleReqiredField.Text,xlbl_TitleReqiredField.Font),xlbl_Title.Height - xlbl_TitleReqiredField.Font.Size/2)
 	xlbl_Counter.SetLayoutAnimated(0,0,Height - m_BottomHeight,Width,m_BottomHeight)
-	xlbl_Info.SetLayoutAnimated(0,0,Height - m_BottomHeight,Width,m_BottomHeight)
+	xlbl_Info.SetLayoutAnimated(0,TextFieldLeft,Height - m_BottomHeight,TextFieldWidth,m_BottomHeight)
+	xpnl_Underline.SetLayoutAnimated(0,TextFieldLeft,TextFieldTop + TextFieldHeight - 2dip,TextFieldWidth,2dip)
   
 	If m_PasswordField And m_StrengthIndicator <> "None" Then
-		xpnl_PasswordStrengthBackground.SetLayoutAnimated(0,0,Height - 20dip - IIf(xlbl_Info.Visible,xlbl_Info.Height,0),Width,20dip)
+		xpnl_PasswordStrengthBackground.SetLayoutAnimated(0,TextFieldLeft,Height - 20dip - IIf(xlbl_Info.Visible,xlbl_Info.Height,0),TextFieldWidth,20dip)
 		DrawPasswordStrengthIndicator
 	End If
   
 	Dim ActionButtonsWidth As Float = 24dip'xpnl_TextFieldBackground.Height/2
 	
-	xlbl_ClearButton.SetLayoutAnimated(0,Width - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap - ActionButtonsWidth - ActionButtonGap,0,ActionButtonsWidth,xpnl_TextFieldBackground.Height)
-	xlbl_RevealButton.SetLayoutAnimated(0,Width - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap*IIf(m_ShowClearButton,3,1) - ActionButtonsWidth*IIf(m_ShowClearButton,2,1),0,ActionButtonsWidth,xpnl_TextFieldBackground.Height)
+	xlbl_ClearButton.SetLayoutAnimated(0,TextFieldWidth - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap - ActionButtonsWidth - ActionButtonGap,m_TopGap,ActionButtonsWidth,xpnl_TextFieldBackground.Height - m_TopGap*2)
+	xlbl_RevealButton.SetLayoutAnimated(0,TextFieldWidth - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap*IIf(m_ShowClearButton,3,1) - ActionButtonsWidth*IIf(m_ShowClearButton,2,1),m_TopGap,ActionButtonsWidth,xpnl_TextFieldBackground.Height - m_TopGap*2)
   
-	xlbl_Prefix.SetLayoutAnimated(0,TextFieldLeft,0,MeasureTextWidth(xlbl_Prefix.Text,xlbl_Prefix.Font) + g_Prefix.Gap,xpnl_TextFieldBackground.Height)
+	xlbl_Prefix.SetLayoutAnimated(0,0,m_TopGap,MeasureTextWidth(xlbl_Prefix.Text,xlbl_Prefix.Font) + g_Prefix.Gap,xpnl_TextFieldBackground.Height - m_TopGap*2)
   
-	Dim TextField_Left As Float = TextFieldLeft + m_LeftGap + IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0)
-	Dim TextField_Width As Float = TextFieldWidth - IIf(m_ShowClearButton,ActionButtonsWidth + ActionButtonGap,0) - IIf(m_ShowRevealButton,ActionButtonsWidth + ActionButtonGap*IIf(m_ShowClearButton,3,1),0) - IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0) - m_LeftGap * IIf(m_ShowRevealButton Or m_ShowClearButton,1,2)
+	'Dim TextField_Left As Float = TextFieldLeft + m_LeftGap + IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0)
+	Dim TextFieldInputLeft As Float = m_LeftGap + IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0)
+	Dim TextField_Width As Float = TextFieldWidth - IIf(m_ShowClearButton,ActionButtonsWidth + ActionButtonGap,0) - IIf(m_ShowRevealButton And m_PasswordField,ActionButtonsWidth + ActionButtonGap*IIf(m_ShowClearButton,3,1),5dip) - IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0) - m_LeftGap * IIf(m_ShowRevealButton Or m_ShowClearButton,1,2)
   
-	If xtf_TextField.IsInitialized Then xtf_TextField.SetLayoutAnimated(0,TextField_Left,0,TextField_Width,xpnl_TextFieldBackground.Height)
+	If g_LeadingIcon.Visible Then TextField_Width = TextField_Width - xpnl_LeadingIcon.Width
+	If g_TrailingIcon.Visible Then TextFieldWidth = TextField_Width - xpnl_TrailingIcon.Width
+  
+	If g_LeadingIcon.Visible Then TextFieldInputLeft = TextFieldInputLeft + xpnl_LeadingIcon.Width
+  
+	TextField_Width = TextField_Width - TextFieldInputLeft
+  
+	xlbl_Prefix.Left = TextFieldInputLeft - xlbl_Prefix.Width
+  
+	Dim IconWidthHeight As Float = xpnl_LeadingIcon.Height/2
+  
+	xiv_LeadingIcon.SetLayoutAnimated(0,xpnl_LeadingIcon.Width/2 - IconWidthHeight/2,xpnl_LeadingIcon.Height/2 - IconWidthHeight/2,IconWidthHeight,IconWidthHeight)
+	xiv_TrailingIcon.SetLayoutAnimated(0,xpnl_TrailingIcon.Width/2 - IconWidthHeight/2,xpnl_TrailingIcon.Height/2 - IconWidthHeight/2,IconWidthHeight,IconWidthHeight)
+  
+	If g_LeadingIcon.Icon <> Null And g_LeadingIcon.Icon.IsInitialized = True Then setLeadingIcon2(g_LeadingIcon.Icon)
+	If g_TrailingIcon.Icon <> Null And g_TrailingIcon.Icon.IsInitialized = True Then setTrailingIcon2(g_TrailingIcon.Icon)
+  
+  
+	If xtf_TextField.IsInitialized Then xtf_TextField.SetLayoutAnimated(0,TextFieldInputLeft,m_TopGap,TextField_Width,xpnl_TextFieldBackground.Height - m_TopGap*2)
 	
-	xlbl_Suffix.SetLayoutAnimated(0,TextField_Left + TextField_Width - MeasureTextWidth(xlbl_Suffix.Text,xlbl_Suffix.Font) - g_Suffix.Gap,0,MeasureTextWidth(xlbl_Suffix.Text,xlbl_Suffix.Font) + g_Prefix.Gap,xpnl_TextFieldBackground.Height)
+	xlbl_Suffix.SetLayoutAnimated(0,TextFieldInputLeft + TextField_Width - MeasureTextWidth(xlbl_Suffix.Text,xlbl_Suffix.Font) - g_Suffix.Gap,m_TopGap,MeasureTextWidth(xlbl_Suffix.Text,xlbl_Suffix.Font) + g_Prefix.Gap,xpnl_TextFieldBackground.Height - m_TopGap*2)
 	If xlbl_Suffix.Visible Then
 		TextField_Width = TextField_Width - xlbl_Suffix.Width
 		If xtf_TextField.IsInitialized Then xtf_TextField.Width = TextField_Width
 	End If
 	
-	'xtf_TextFieldPassword.SetLayoutAnimated(0,TextFieldLeft + m_LeftGap,0,TextFieldWidth - IIf(m_ShowClearButton,ActionButtonsWidth + ActionButtonGap,0) - IIf(m_ShowRevealButton,ActionButtonsWidth + ActionButtonGap*IIf(m_ShowClearButton,3,1),0) - m_LeftGap * IIf(m_ShowRevealButton Or m_ShowClearButton,1,2),xpnl_TextFieldBackground.Height)
-	If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.SetLayoutAnimated(0,TextField_Left,0,TextField_Width,xpnl_TextFieldBackground.Height)
-	xlbl_ButtonText.SetLayoutAnimated(0,TextField_Left,0,TextField_Width,xpnl_TextFieldBackground.Height)
+	If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.SetLayoutAnimated(0,TextFieldInputLeft,m_TopGap,TextField_Width,xpnl_TextFieldBackground.Height - m_TopGap*2)
+	xlbl_ButtonText.SetLayoutAnimated(0,TextFieldInputLeft,m_TopGap,TextField_Width,xpnl_TextFieldBackground.Height - m_TopGap*2)
 	If m_Mode <> "Multiline" Then
-		xlbl_Hint.SetLayoutAnimated(0,TextField_Left,0,TextField_Width,xpnl_TextFieldBackground.Height)
+		xlbl_Hint.SetLayoutAnimated(0,TextFieldInputLeft,m_TopGap,TextField_Width,xpnl_TextFieldBackground.Height - m_TopGap*2)
 	Else
-		xlbl_Hint.SetLayoutAnimated(0,TextFieldLeft + m_LeftGap,5dip,Width - TextFieldLeft - m_LeftGap*2,TextFieldHeight - 10dip)
+		xlbl_Hint.SetLayoutAnimated(0,TextFieldInputLeft + m_LeftGap,5dip + m_TopGap,TextField_Width - TextFieldInputLeft - m_LeftGap*2,TextFieldHeight - 10dip - m_TopGap*2)
 		#If B4I
 		xlbl_Hint.As(Label).SizeToFit
 		#End If	
@@ -599,15 +751,25 @@ Private Sub Base_Resize (Width As Double, Height As Double)
 		xpnl_LeadingIcon.Visible = False
 		xpnl_TrailingIcon.Visible = False
 	End If
+	MoveFloatingHint(getText.Length = 0,False)
 	
 	If xtf_Multiline.IsInitialized Then
 	#If B4J
-		xtf_Multiline.SetLayoutAnimated(0,xlbl_Hint.Left - 13dip,-1dip,Width + 4dip,TextFieldHeight)
+		xtf_Multiline.SetLayoutAnimated(0,xlbl_Hint.Left - 13dip,-1dip + m_TopGap,TextField_Width + 4dip,TextFieldHeight - m_TopGap*2)
 	#Else if B4I
-		xtf_Multiline.SetLayoutAnimated(0,xlbl_Hint.Left,-8dip + 5dip,Width - (xlbl_Hint.Left*2),TextFieldHeight - 10dip + 8dip)
+		xtf_Multiline.SetLayoutAnimated(0,xlbl_Hint.Left,-8dip + 5dip + m_TopGap,TextField_Width - (xlbl_Hint.Left*2),TextFieldHeight - 10dip + 8dip - m_TopGap*2)
 		#Else
-		xtf_Multiline.SetLayoutAnimated(0,xlbl_Hint.Left,5dip,Width - (xlbl_Hint.Left*2),TextFieldHeight - 10dip)
+		xtf_Multiline.SetLayoutAnimated(0,xlbl_Hint.Left,5dip + m_TopGap,TextField_Width - (xlbl_Hint.Left*2),TextFieldHeight - 10dip - m_TopGap*2)
 	#End If
+	End If
+	
+	If xcb_ComboBox.IsInitialized Then
+		#If B4A
+		xlbl_ButtonText.Height = xlbl_ButtonText.Height - 5dip
+		xlbl_ButtonText.Top = xlbl_ButtonText.Top + 5dip/2
+		#End If
+		xcb_ComboBox.mBase.SetLayoutAnimated(0,xlbl_Hint.Left,xlbl_Hint.Top,TextField_Width,xlbl_Hint.Height)
+		CallSub3(xcb_ComboBox, "Base_Resize", TextField_Width,xcb_ComboBox.mBase.Height) ' true or false
 	End If
 	
 End Sub
@@ -616,7 +778,8 @@ Private Sub Style
 	'****************View Properties*******************************
 	'Title Options
 	If g_Title.IgnoreProperties = False Then
-		xlbl_Title.Text = g_Title.Text
+		If m_TitleMode <> "FloatText" Then xlbl_Title.Text = g_Title.Text
+		If m_TitleMode = "FloatText" Then xlbl_FloatingHintTitle.Text = g_Title.Text
 		If m_HasFocus Then
 			xlbl_Title.TextColor = g_Title.FocusedTextColor
 			'Log(g_Title.FocusedTextColor)
@@ -625,12 +788,12 @@ Private Sub Style
 			'Log(g_Title.NonFocusedTextColor)
 		End If
 		xlbl_Title.Font = g_Title.xFont
-		xlbl_Title.SetTextAlignment("CENTER","LEFT")
+		xlbl_Title.SetTextAlignment("CENTER",g_Title.HorizontalAlignment)
         
 		xlbl_TitleReqiredField.Text = "*"
 		xlbl_TitleReqiredField.Textcolor = m_RequiredFieldColor
 		xlbl_TitleReqiredField.Font = g_Title.xFont
-		xlbl_TitleReqiredField.SetTextAlignment("CENTER","LEFT")
+		xlbl_TitleReqiredField.SetTextAlignment("CENTER",g_Title.HorizontalAlignment)
         
 	End If
 
@@ -642,12 +805,12 @@ Private Sub Style
 			xlbl_Hint.TextColor = g_Hint.NonFocusedTextColor
 		End If
 		xlbl_Hint.Font = g_Hint.xFont
-		xlbl_Hint.Text = IIf(g_Hint.Visible,g_Hint.Text,"")
+		If m_TitleMode <> "FloatText" Then xlbl_Hint.Text = g_Hint.Text'IIf(g_Hint.Visible,g_Hint.Text,"")
 		If m_Mode = "Multiline" Then
 			xlbl_Hint.SetTextAlignment("TOP",m_TextAlignment)
 		End If
 	End If
-	
+
 	'Info Options
 	If g_Information.IgnoreProperties = False Then
 		xlbl_Info.Text = g_Information.Text
@@ -683,8 +846,53 @@ Private Sub Style
 	xlbl_ClearButton.TextColor = IIf(ClearAndRevealButtonColor(0) > 0,m_ClearAndRevealButtonColor, IIf(isColorDark(m_BackgroundColor),xui.Color_ARGB(152,255,255,255),xui.Color_ARGB(152,0,0,0)))
 	xlbl_RevealButton.TextColor = xlbl_ClearButton.TextColor
 	
-	xpnl_TextFieldBackground.SetColorAndBorder(m_BackgroundColor,g_TextFieldProperties.BorderWidth,IIf(m_HasFocus,g_TextFieldProperties.FocusedShapeColor,g_TextFieldProperties.NonFocusedShapeColor),g_TextFieldProperties.CornerRadius)
+	UpdateTextFieldShape
+End Sub
+
+Private Sub RefreshFloatingHint
 	
+	If getText.Length = 0 Then
+	
+		xlbl_FloatingHintTitle.TextColor = xlbl_Hint.TextColor
+		xlbl_FloatingHintTitle.Font = xlbl_Hint.Font
+		
+		xlbl_FloatingHintTitle.Color = xui.Color_Transparent
+		xlbl_FloatingHintTitle.SetTextAlignment("CENTER",m_TextAlignment)
+		
+		If m_Mode = "Multiline" Then
+			xlbl_FloatingHintTitle.SetTextAlignment("TOP",m_TextAlignment)
+		End If
+	
+	Else
+		
+		xlbl_FloatingHintTitle.TextColor = xlbl_Title.TextColor
+		xlbl_FloatingHintTitle.Font = xlbl_Title.Font
+		
+	End If
+	
+End Sub
+
+Private Sub MoveFloatingHint(ToHint As Boolean,Animated As Boolean)
+	
+	If m_TitleMode <> "FloatText" Or (m_LastToHint = ToHint And Animated = True) Then Return
+	
+	m_LastToHint = ToHint
+	
+	Dim Duration As Int = IIf(Animated,250,0)
+	
+	If ToHint Then
+		xlbl_FloatingHintTitle.SetLayoutAnimated(Duration,xpnl_TextFieldBackground.Left + xlbl_Hint.Left,xpnl_TextFieldBackground.Top + xlbl_Hint.Top,xlbl_Hint.Width,xlbl_Hint.Height)
+		xlbl_FloatingHintTitle.SetTextSizeAnimated(Duration,xlbl_Hint.TextSize)
+		xlbl_FloatingHintTitle.TextColor = xlbl_Hint.TextColor
+		Sleep(Duration)
+		xlbl_FloatingHintTitle.Font = xlbl_Hint.Font
+	Else
+		xlbl_FloatingHintTitle.SetLayoutAnimated(Duration,xlbl_Title.Left,xlbl_Title.Top,xlbl_Title.Width,xlbl_Title.Height)
+		xlbl_FloatingHintTitle.SetTextSizeAnimated(Duration,xlbl_Title.Font.Size)
+		xlbl_FloatingHintTitle.TextColor = xlbl_Title.TextColor
+		Sleep(Duration)
+		xlbl_FloatingHintTitle.Font = xlbl_Title.Font
+	End If
 End Sub
 
 Public Sub Refresh
@@ -695,15 +903,29 @@ End Sub
 'Returns True if the focus has shifted
 'Always retuns True in B4J
 Public Sub Focus As Boolean
-	If m_Mode = "Multiline" Then
-		Return xtf_Multiline.RequestFocus
-	Else
-		If xlbl_RevealButton.Tag = "reveal" And m_isPasswordMode Then
-			Return xtf_TextFieldPassword.RequestFocus
-		Else
-			Return xtf_TextField.RequestFocus
-		End If	
-	End If
+	
+	Select m_Mode
+		Case "Multiline"
+					#If B4A
+		IME.ShowKeyboard(xtf_Multiline)
+			#End If
+			Return xtf_Multiline.RequestFocus
+		Case "Button","ComboBox"
+			Return True
+		Case Else
+			If xlbl_RevealButton.Tag = "reveal" And m_isPasswordMode Then
+			#If B4A
+			IME.ShowKeyboard(xtf_TextFieldPassword)
+			#End If
+				Return xtf_TextFieldPassword.RequestFocus
+			Else
+			#If B4A
+			IME.ShowKeyboard(xtf_TextField)
+			#End If
+				Return xtf_TextField.RequestFocus
+			End If
+	End Select
+	
 End Sub
 'Call this function to inform the user that not all required fields are filled in.
 'Call HideDisplayMissingField to remove it
@@ -718,13 +940,126 @@ End Sub
 '<code>AS_TextFieldAdvanced_1.HideDisplayMissingField</code>
 Public Sub HideDisplayMissingField
 	If m_isInRequiredMode Then
-		xpnl_TextFieldBackground.SetColorAndBorder(m_BackgroundColor,g_TextFieldProperties.BorderWidth,IIf(m_HasFocus,g_TextFieldProperties.FocusedShapeColor,g_TextFieldProperties.NonFocusedShapeColor),g_TextFieldProperties.CornerRadius)
+		UpdateTextFieldShape
 	xlbl_Info.Text = g_Information.Text
 	m_isInRequiredMode = False
 	End If
 End Sub
 
 #Region Properties
+
+Public Sub setTextAlignment(TextAlignment As String)
+	m_TextAlignment = TextAlignment
+	If xtf_TextField.IsInitialized Then xtf_TextField.SetTextAlignment("CENTER",m_TextAlignment)
+	If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.SetTextAlignment("CENTER",m_TextAlignment)
+	If xlbl_ButtonText.IsInitialized Then xlbl_ButtonText.SetTextAlignment("CENTER",m_TextAlignment)
+	If xlbl_Hint.IsInitialized Then xlbl_Hint.SetTextAlignment("CENTER",m_TextAlignment)
+	'If xcb_ComboBox.IsInitialized Then xcb_ComboBox.SetTextAlignment("CENTER",m_TextAlignment)
+	
+	If xtf_Multiline.IsInitialized Then
+		#If B4A or B4I
+	xtf_Multiline.SetTextAlignment("TOP",m_TextAlignment)
+		#Else
+		If m_TextAlignment = "LEFT" Then
+			xtf_Multiline.As(JavaObject).RunMethod("setNodeOrientation", Array("LEFT_TO_RIGHT"))
+		else If m_TextAlignment = "RIGHT" Then
+			xtf_Multiline.As(JavaObject).RunMethod("setNodeOrientation", Array("RIGHT_TO_LEFT"))
+		End If	
+	#End If
+	End If
+End Sub
+
+Public Sub getTextAlignment As String
+	Return m_TextAlignment
+End Sub
+
+'If true the ShapeColor ist used for this underline
+Public Sub getUnderline As Boolean
+	Return m_Underline
+End Sub
+
+Public Sub setUnderline(Underline As Boolean)
+	m_Underline = Underline
+	UpdateTextFieldShape
+End Sub
+
+'Works only if the TitleMode is set to BeforeTextField. The Text width of the title
+'Sets the width value for all textfields on the parent
+Public Sub TitleWidthAll(Parent As B4XView,Width As Float)
+	For i = 0 To Parent.NumberOfViews -1
+		If Parent.GetView(i).Tag Is AS_TextFieldAdvanced Then
+			Parent.GetView(i).Tag.As(AS_TextFieldAdvanced).TitleWidth = Width
+			Parent.GetView(i).Tag.As(AS_TextFieldAdvanced).Refresh
+		End If
+	Next
+End Sub
+
+'Works only if the TitleMode is set to BeforeTextField. The Text width of the title
+Public Sub getTitleWidth As Float
+	Return m_TitleWidth
+End Sub
+
+Public Sub setTitleWidth(Width As Float)
+	m_TitleWidth = Width
+End Sub
+
+'Set the ComboBox Items
+Public Sub SetItems(Items As List)
+	xcb_ComboBox.SetItems(Items)
+	xlbl_ButtonText.Text = xcb_ComboBox.SelectedItem
+End Sub
+
+'Gets or sets the ComboBox Index
+Public Sub setSelectedIndex(Index As Int)
+	xcb_ComboBox.SelectedIndex = Index
+	xlbl_ButtonText.Text = xcb_ComboBox.SelectedItem
+End Sub
+
+Public Sub getSelectedIndex As Int
+	Return xcb_ComboBox.SelectedIndex
+End Sub
+
+'ComboBox
+'Returns the index of the item with the given value. Returns -1 if not found.
+Public Sub IndexOf(Item As String) As Int
+	Return xcb_ComboBox.IndexOf(Item)
+End Sub
+
+'Gets the AS_ComboBoxIntern
+Public Sub getComboBox As AS_ComboBoxIntern
+	Return xcb_ComboBox
+End Sub
+
+Public Sub OpenComboBox
+	If m_Mode = "ComboBox" Then
+		OpenComboBoxIntern(xcb_ComboBox)
+	Else
+		LogColor("Textfield mode is not ComboBox!",xui.Color_Red)
+	End If
+End Sub
+
+Public Sub getUnderlinePanel As B4XView
+	Return xpnl_Underline
+End Sub
+
+'Default is the textfield height
+Public Sub getTrailingWidth As Float
+	Return m_CustomTrailingWidth
+End Sub
+
+Public Sub setTrailingWidth(Width As Float)
+	m_CustomTrailingWidth = Width
+End Sub
+
+'Default is the textfield height
+Public Sub getLeadingWidth As Float
+	Return m_CustomLeadingWidth
+End Sub
+
+Public Sub setLeadingWidth(Width As Float)
+	m_CustomLeadingWidth = Width
+End Sub
+
 Public Sub setMaskText(Mask As String)
 	m_MaskText = Mask
 End Sub
@@ -758,11 +1093,27 @@ Public Sub setReadOnly(ReadOnly As Boolean)
 	If ReadOnly = True Then
 		If xtf_TextField.IsInitialized Then xtf_TextField.Enabled = False
 		If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.Enabled = False
-		If xtf_Multiline.IsInitialized Then	xtf_Multiline.Enabled = False
-		Else
+		If xtf_Multiline.IsInitialized Then
+			'xtf_Multiline.Enabled = False
+			#If B4I
+			xtf_Multiline.As(TextView).Editable = False
+			#Else If B4A
+			xtf_Multiline.As(EditText).InputType = xtf_Multiline.As(EditText).INPUT_TYPE_NONE
+			xtf_Multiline.As(EditText).SingleLine = False
+			#End If
+		End If
+	Else
 		If xtf_TextField.IsInitialized Then xtf_TextField.Enabled = True
 		If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.Enabled = True
-		If xtf_Multiline.IsInitialized Then xtf_Multiline.Enabled = True
+		If xtf_Multiline.IsInitialized Then
+			xtf_Multiline.Enabled = True
+				#If B4I
+			xtf_Multiline.As(TextView).Editable = True
+						#Else If B4A
+			xtf_Multiline.As(EditText).InputType = xtf_Multiline.As(EditText).INPUT_TYPE_TEXT
+			xtf_Multiline.As(EditText).SingleLine = False
+			#End If
+		End If
 	End If
 End Sub
 'Call Refresh if you change something
@@ -804,17 +1155,19 @@ End Sub
 
 '***************************************Button*********************************
 
-Public Sub setButtonText(Text As String)
+Private Sub setButtonText(Text As String)
 	xlbl_ButtonText.Text = Text
 	If Text.Length > 0 Then
 		xlbl_Hint.Visible = False
+		MoveFloatingHint(False,True)
 	Else
 		xlbl_Hint.Visible = g_Hint.Visible
+		MoveFloatingHint(True,True)
 	End If
 	TextChanged(Text)
 End Sub
 'Without TextChanged Event
-Public Sub setButtonText2(Text As String)
+Private Sub setButtonText2(Text As String)
 	m_IgnoreTextChangeEvent = True
 	setButtonText(Text)
 	Sleep(250)
@@ -955,11 +1308,22 @@ Public Sub setLeftGap(Gap As Float)
 	m_LeftGap = Gap
 End Sub
 
+'Default: 0dip
+'Call Refresh if you change something
+Public Sub getTopGap As Float
+	Return m_TopGap
+End Sub
+
+Public Sub setTopGap(Gap As Float)
+	m_TopGap = Gap
+End Sub
+
 Public Sub setTextColor(Color As Int)
 	m_TextColor = Color
 	If xtf_TextField.IsInitialized Then xtf_TextField.TextColor = m_TextColor
 	If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.TextColor = m_TextColor
 	If xtf_Multiline.IsInitialized Then xtf_Multiline.TextColor = m_TextColor
+	If xlbl_ButtonText.IsInitialized Then xlbl_ButtonText.TextColor = m_TextColor
 End Sub
 
 Public Sub getText As String
@@ -978,22 +1342,31 @@ Public Sub getText As String
 End Sub
 'Without TextChanged Event
 Public Sub setText2(Text As String)
-	m_IgnoreTextChangeEvent = True
-	setText(Text)
-	Sleep(250)
-	m_IgnoreTextChangeEvent = False
+	If m_Mode = "Button" Then
+		setButtonText2(Text)
+	Else
+		m_IgnoreTextChangeEvent = True
+		setText(Text)
+		Sleep(250)
+		m_IgnoreTextChangeEvent = False
+	End If
 End Sub
 
 Public Sub setText(Text As String)
-	If xtf_TextField.IsInitialized Then xtf_TextField.Text = Text
-	If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.Text = Text
-	If xtf_Multiline.IsInitialized Then xtf_Multiline.Text = Text
-	If Text.Length > 0 Then
-		xlbl_Hint.Visible = False
+	If m_Mode = "Button" Then
+		setButtonText(Text)
 	Else
-		xlbl_Hint.Visible = g_Hint.Visible
+		If xtf_TextField.IsInitialized Then xtf_TextField.Text = Text
+		If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.Text = Text
+		If xtf_Multiline.IsInitialized Then xtf_Multiline.Text = Text
+		If Text.Length > 0 Then
+			xlbl_Hint.Visible = False
+		Else
+			xlbl_Hint.Visible = g_Hint.Visible
+			MoveFloatingHint(True,False)
+		End If
+		TextChanged(Text)
 	End If
-	TextChanged(Text)
 End Sub
 'Gets the full text, with Prefix and Suffix
 Public Sub getTextFull As String
@@ -1066,6 +1439,11 @@ Private Sub xtf_TextField_TextChanged (Old As String, New As String)
 End Sub
 #End If
 
+Private Sub GetRealTextLength(Text As String) As Int
+	Dim Result() As Int = bc.IntsFromBytes(Text.GetBytes("UTF-32BE"))
+	Return Result.Length
+End Sub
+
 Private Sub TextChanged(Text As String)
 	If m_isViewReady = False Then Return
 	If m_Mask<>"None" And (m_MaskText.Contains("X") Or m_MaskText.Contains("0"))  Then
@@ -1077,24 +1455,24 @@ Private Sub TextChanged(Text As String)
 	End If
 
 	If g_Counter.Visible Then
-		If Text.Length > g_Counter.CounterMax Then
+		If GetRealTextLength(Text) > g_Counter.CounterMax Then
 			
 			If xtf_TextField .IsInitialized Then
 				Dim SelectionStart As Int = xtf_TextField.SelectionStart
-				xtf_TextField.Text = Text.SubString2(0,g_Counter.CounterMax)
+				xtf_TextField.Text = m_OldText'Text.SubString2(0,g_Counter.CounterMax)
 				xtf_TextField.SelectionStart = Min(SelectionStart,xtf_TextField.Text.Length)
 			End If
 			If xtf_TextFieldPassword .IsInitialized Then
 				Dim SelectionStart As Int = xtf_TextFieldPassword.SelectionStart
-				xtf_TextFieldPassword.Text = Text.SubString2(0,g_Counter.CounterMax)
+				xtf_TextFieldPassword.Text = m_OldText'Text.SubString2(0,g_Counter.CounterMax)
 				xtf_TextFieldPassword.SelectionStart = Min(SelectionStart,xtf_TextFieldPassword.Text.Length)
 			End If
 			If xtf_Multiline.IsInitialized Then
 				Dim SelectionStart As Int = xtf_Multiline.SelectionStart
-				xtf_Multiline.Text = Text.SubString2(0,g_Counter.CounterMax)
+				xtf_Multiline.Text = m_OldText'Text.SubString2(0,g_Counter.CounterMax)
 				xtf_Multiline.SelectionStart = Min(SelectionStart,xtf_Multiline.Text.Length)
 			End If
-			Text = Text.SubString2(0,g_Counter.CounterMax)
+			Text = m_OldText'Text.SubString2(0,g_Counter.CounterMax)
 		End If
 	End If
 	
@@ -1102,15 +1480,17 @@ Private Sub TextChanged(Text As String)
 		xlbl_ClearButton.Visible = False
 		xlbl_RevealButton.Visible = False
 		xlbl_Hint.Visible = g_Hint.Visible
+		MoveFloatingHint(True,True)
 	Else
 		xlbl_ClearButton.Visible = m_ShowClearButton
 		xlbl_RevealButton.Visible = m_PasswordField And m_ShowRevealButton
 		xlbl_Hint.Visible = False
+		MoveFloatingHint(False,True)
 	End If
 	
-	xlbl_Counter.Text = Text.Length & "/" & g_Counter.CounterMax
+	xlbl_Counter.Text = GetRealTextLength(Text) & "/" & g_Counter.CounterMax
 	TextChanged_Event(Text)
-
+	m_OldText = Text
 End Sub
 
 #If B4J
@@ -1160,6 +1540,13 @@ Private Sub xtf_TextField_FocusChanged (HasFocus As Boolean)
 		xlbl_Hint.TextColor = g_Hint.NonFocusedTextColor
 		xlbl_Title.TextColor = g_Title.NonFocusedTextColor
 	End If
+	
+	If getText.Length = 0 Then
+		xlbl_FloatingHintTitle.TextColor = xlbl_Hint.TextColor
+	Else
+		xlbl_FloatingHintTitle.TextColor = xlbl_Title.TextColor
+	End If
+	
 	FocusChanged(HasFocus)
 End Sub
 #End If
@@ -1169,6 +1556,11 @@ Private Sub xlbl_ClearButton_MouseClicked (EventData As MouseEvent)
 Private Sub xlbl_ClearButton_Click
 #End If
 	ClearButton_Click
+End Sub
+
+Private Sub xcb_ComboBox_SelectedIndexChanged (Index As Int)
+	xlbl_ButtonText.Text = xcb_ComboBox.SelectedItem
+	ComboBoxSelectedIndexChanged(Index)
 End Sub
 
 Private Sub ClearButton_Click
@@ -1233,7 +1625,15 @@ Private Sub xlbl_ButtonText_MouseClicked (EventData As MouseEvent)
 #Else
 Private Sub xlbl_ButtonText_Click
 #End If
-	ButtonClick
+	If m_ReadOnly = False Then ButtonClick
+End Sub
+
+#If B4J
+Private Sub xlbl_Title_MouseClicked (EventData As MouseEvent)
+#Else
+Private Sub xlbl_Title_Click
+#End If
+	TitleClick
 End Sub
 
 #End Region
@@ -1403,15 +1803,44 @@ Private Sub CountMatches(text As String,pattern As String) As Int
 	Return tmp_count
 End Sub
 
+Private Sub ComboBoxSelectedIndexChanged(Index As Int)
+	If xui.SubExists(mCallBack, mEventName & "_ComboBoxSelectedIndexChanged",1) Then
+		CallSub2(mCallBack, mEventName & "_ComboBoxSelectedIndexChanged",Index)
+	End If
+End Sub
+
+Private Sub OpenComboBoxIntern(x As AS_ComboBoxIntern)
+    #if B4A
+    x.cmbBox.As(JavaObject).RunMethod("performClick", Null)
+    #else if B4J
+    x.cmbBox.As(JavaObject).RunMethod("show", Null)
+    #else if B4i
+	CallSub(x, "btn_click")
+    #end if
+End Sub
+
+Private Sub TitleClick
+	If xui.SubExists(mCallBack, mEventName & "_TitleClick",0) Then
+		CallSub(mCallBack, mEventName & "_TitleClick")
+	End If
+End Sub
+
 Private Sub ButtonClick
+	
+	If m_Mode = "ComboBox" Then
+		OpenComboBoxIntern(xcb_ComboBox)
+	End If
+	
 	If xui.SubExists(mCallBack, mEventName & "_ButtonClick",0) Then
 		CallSub(mCallBack, mEventName & "_ButtonClick")
 	End If
 End Sub
 
 Private Sub FocusChanged(HasFocus As Boolean)
-	If m_isInRequiredMode = False Then xpnl_TextFieldBackground.SetColorAndBorder(m_BackgroundColor,g_TextFieldProperties.BorderWidth,IIf(HasFocus,g_TextFieldProperties.FocusedShapeColor,g_TextFieldProperties.NonFocusedShapeColor),g_TextFieldProperties.CornerRadius)
 	m_HasFocus = HasFocus
+	If m_isInRequiredMode = False Then 
+		UpdateTextFieldShape
+	End If
 	If xui.SubExists(mCallBack, mEventName & "_FocusChanged",1) Then
 		CallSub2(mCallBack, mEventName & "_FocusChanged",HasFocus)
 	End If
@@ -1443,7 +1872,7 @@ End Sub
 
 #If B4J
 Private Sub xpnl_TextFieldBackground_MouseClicked (EventData As MouseEvent)
-	Focus
+	 Focus
 End Sub
 #End If
 
@@ -1700,6 +2129,15 @@ Private Sub isColorDark(color As Int) As Boolean
     
 End Sub
 
+#If B4I
+'state: 0 = normal, 1 = pressed, 2 = disabled
+Private Sub SetButtonTextColor(btn As Button, clr As Int, state As Int)
+	Dim no As NativeObject = btn
+	no.RunMethod("setTitleColor:forState:", Array(no.ColorToUIColor(clr), state))
+End Sub
+
+#End If
+
 #End Region
 
 Private Sub CreateASTextFieldAdvanced_ViewLeadingIcon (xpnl_Background As B4XView, xiv_Icon As B4XView) As ASTextFieldAdvanced_ViewLeadingIcon
@@ -1718,7 +2156,7 @@ Private Sub CreateASTextFieldAdvanced_ViewTrailingIcon (xpnl_Background As B4XVi
 	Return t1
 End Sub
 
-Public Sub CreateASTextFieldAdvanced_LeadingIcon (Visible As Boolean, Icon As B4XBitmap, View As ASTextFieldAdvanced_ViewLeadingIcon) As ASTextFieldAdvanced_LeadingIcon
+Private Sub CreateASTextFieldAdvanced_LeadingIcon (Visible As Boolean, Icon As B4XBitmap, View As ASTextFieldAdvanced_ViewLeadingIcon) As ASTextFieldAdvanced_LeadingIcon
 	Dim t1 As ASTextFieldAdvanced_LeadingIcon
 	t1.Initialize
 	t1.Visible = Visible
@@ -1727,25 +2165,11 @@ Public Sub CreateASTextFieldAdvanced_LeadingIcon (Visible As Boolean, Icon As B4
 	Return t1
 End Sub
 
-Public Sub CreateASTextFieldAdvanced_TrailingIcon (Visible As Boolean, Icon As B4XBitmap, View As ASTextFieldAdvanced_ViewTrailingIcon) As ASTextFieldAdvanced_TrailingIcon
+Private Sub CreateASTextFieldAdvanced_TrailingIcon (Visible As Boolean, Icon As B4XBitmap, View As ASTextFieldAdvanced_ViewTrailingIcon) As ASTextFieldAdvanced_TrailingIcon
 	Dim t1 As ASTextFieldAdvanced_TrailingIcon
 	t1.Initialize
 	t1.Visible = Visible
 	t1.Icon = Icon
-	t1.View = View
-	Return t1
-End Sub
-
-Public Sub CreateASTextFieldAdvanced_Title (Visible As Boolean, Text As String, Height As Float, IgnoreProperties As Boolean, xFont As B4XFont, FocusedTextColor As Int, NonFocusedTextColor As Int, View As ASTextFieldAdvanced_ViewTitle) As ASTextFieldAdvanced_Title
-	Dim t1 As ASTextFieldAdvanced_Title
-	t1.Initialize
-	t1.Visible = Visible
-	t1.Text = Text
-	t1.Height = Height
-	t1.IgnoreProperties = IgnoreProperties
-	t1.xFont = xFont
-	t1.FocusedTextColor = FocusedTextColor
-	t1.NonFocusedTextColor = NonFocusedTextColor
 	t1.View = View
 	Return t1
 End Sub
@@ -1764,7 +2188,7 @@ Private Sub CreateASTextFieldAdvanced_ViewInformation (xlbl_Information As B4XVi
 	Return t1
 End Sub
 
-Public Sub CreateASTextFieldAdvanced_Information (Visible As Boolean, Text As String, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, View As ASTextFieldAdvanced_ViewInformation) As ASTextFieldAdvanced_Information
+Private Sub CreateASTextFieldAdvanced_Information (Visible As Boolean, Text As String, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, View As ASTextFieldAdvanced_ViewInformation) As ASTextFieldAdvanced_Information
 	Dim t1 As ASTextFieldAdvanced_Information
 	t1.Initialize
 	t1.Visible = Visible
@@ -1783,7 +2207,7 @@ Private Sub CreateASTextFieldAdvanced_ViewCounter (xlbl_Counter2 As B4XView) As 
 	Return t1
 End Sub
 
-Public Sub CreateASTextFieldAdvanced_Counter (Visible As Boolean, CounterMax As Int, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, View As ASTextFieldAdvanced_ViewCounter) As ASTextFieldAdvanced_Counter
+Private Sub CreateASTextFieldAdvanced_Counter (Visible As Boolean, CounterMax As Int, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, View As ASTextFieldAdvanced_ViewCounter) As ASTextFieldAdvanced_Counter
 	Dim t1 As ASTextFieldAdvanced_Counter
 	t1.Initialize
 	t1.Visible = Visible
@@ -1802,7 +2226,7 @@ Private Sub CreateASTextFieldAdvanced_ViewHint (xlbl_Hint2 As B4XView) As ASText
 	Return t1
 End Sub
 
-Public Sub CreateASTextFieldAdvanced_Hint (Visible As Boolean, Text As String, IgnoreProperties As Boolean, FocusedTextColor As Int, NonFocusedTextColor As Int, xFont As B4XFont, View As ASTextFieldAdvanced_ViewHint) As ASTextFieldAdvanced_Hint
+Private Sub CreateASTextFieldAdvanced_Hint (Visible As Boolean, Text As String, IgnoreProperties As Boolean, FocusedTextColor As Int, NonFocusedTextColor As Int, xFont As B4XFont, View As ASTextFieldAdvanced_ViewHint) As ASTextFieldAdvanced_Hint
 	Dim t1 As ASTextFieldAdvanced_Hint
 	t1.Initialize
 	t1.Visible = Visible
@@ -1823,7 +2247,7 @@ Private Sub CreateASTextFieldAdvanced_ViewPrefixSuffix (xlbl_PrefixSuffix As B4X
 End Sub
 
 
-Public Sub CreateASTextFieldAdvanced_Suffix (Visible As Boolean, Text As String, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, Gap As Float, View As ASTextFieldAdvanced_ViewPrefixSuffix) As ASTextFieldAdvanced_Suffix
+Private Sub CreateASTextFieldAdvanced_Suffix (Visible As Boolean, Text As String, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, Gap As Float, View As ASTextFieldAdvanced_ViewPrefixSuffix) As ASTextFieldAdvanced_Suffix
 	Dim t1 As ASTextFieldAdvanced_Suffix
 	t1.Initialize
 	t1.Visible = Visible
@@ -1836,7 +2260,7 @@ Public Sub CreateASTextFieldAdvanced_Suffix (Visible As Boolean, Text As String,
 	Return t1
 End Sub
 
-Public Sub CreateASTextFieldAdvanced_Prefix (Visible As Boolean, Text As String, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, Gap As Float, View As ASTextFieldAdvanced_ViewPrefixSuffix) As ASTextFieldAdvanced_Prefix
+Private Sub CreateASTextFieldAdvanced_Prefix (Visible As Boolean, Text As String, IgnoreProperties As Boolean, xFont As B4XFont, TextColor As Int, Gap As Float, View As ASTextFieldAdvanced_ViewPrefixSuffix) As ASTextFieldAdvanced_Prefix
 	Dim t1 As ASTextFieldAdvanced_Prefix
 	t1.Initialize
 	t1.Visible = Visible
@@ -1849,12 +2273,27 @@ Public Sub CreateASTextFieldAdvanced_Prefix (Visible As Boolean, Text As String,
 	Return t1
 End Sub
 
-Public Sub CreateASTextFieldAdvanced_TextFieldProperties (FocusedShapeColor As Int, NonFocusedShapeColor As Int, BorderWidth As Float, CornerRadius As Float) As ASTextFieldAdvanced_TextFieldProperties
+Private Sub CreateASTextFieldAdvanced_TextFieldProperties (FocusedShapeColor As Int, NonFocusedShapeColor As Int, BorderWidth As Float, CornerRadius As Float) As ASTextFieldAdvanced_TextFieldProperties
 	Dim t1 As ASTextFieldAdvanced_TextFieldProperties
 	t1.Initialize
 	t1.FocusedShapeColor = FocusedShapeColor
 	t1.NonFocusedShapeColor = NonFocusedShapeColor
 	t1.BorderWidth = BorderWidth
 	t1.CornerRadius = CornerRadius
+	Return t1
+End Sub
+
+Public Sub CreateASTextFieldAdvanced_Title (Visible As Boolean, Text As String, Height As Float, IgnoreProperties As Boolean, xFont As B4XFont, FocusedTextColor As Int, NonFocusedTextColor As Int, HorizontalAlignment As String, View As ASTextFieldAdvanced_ViewTitle) As ASTextFieldAdvanced_Title
+	Dim t1 As ASTextFieldAdvanced_Title
+	t1.Initialize
+	t1.Visible = Visible
+	t1.Text = Text
+	t1.Height = Height
+	t1.IgnoreProperties = IgnoreProperties
+	t1.xFont = xFont
+	t1.FocusedTextColor = FocusedTextColor
+	t1.NonFocusedTextColor = NonFocusedTextColor
+	t1.HorizontalAlignment = HorizontalAlignment
+	t1.View = View
 	Return t1
 End Sub

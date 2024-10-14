@@ -16,6 +16,7 @@ Sub Class_Globals
 	Private xui As XUI
 	Private AS_TextFieldAdvanced_1 As AS_TextFieldAdvanced
 	Private AS_TextFieldAdvanced_2 As AS_TextFieldAdvanced
+	Private AS_TextFieldAdvanced_3 As AS_TextFieldAdvanced
 	Private AS_TextFieldAdvanced_4 As AS_TextFieldAdvanced
 	Private AS_TextFieldAdvanced_5 As AS_TextFieldAdvanced
 	Private AS_TextFieldAdvanced_6 As AS_TextFieldAdvanced
@@ -52,10 +53,10 @@ Private Sub B4XPage_Created (Root1 As B4XView)
 	AS_TextFieldAdvanced_5.Suffix.Text = "@gmail.com"
 	AS_TextFieldAdvanced_5.Refresh
 
+
 'Sleep(3000)
 '	AS_TextFieldAdvanced_1.ShowDisplayMissingField("This field is required")
-	
-	
+
 End Sub
 
 Private Sub AS_TextFieldAdvanced_2_TextChanged(Text As String)
@@ -102,4 +103,6 @@ End Sub
 
 Private Sub AS_TextFieldAdvanced_4_TrailingIconClick
 	Log("TrailingIconClick")
+	AS_TextFieldAdvanced_4.Hint.Text = "luuul"
+	AS_TextFieldAdvanced_4.Refresh
 End Sub

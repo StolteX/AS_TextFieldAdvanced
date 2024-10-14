@@ -8,15 +8,18 @@ FileGroup2=Default Group
 FileGroup3=Default Group
 Group=Default Group
 Library1=b4xpages
-Library2=cssutils
-Library3=jcore
-Library4=jfx
+Library2=byteconverter
+Library3=cssutils
+Library4=jcore
+Library5=jfx
+Library6=xui views
 Module1=|relative|..\..\AS_TextFieldAdvanced
-Module2=|relative|..\B4XMainPage
+Module2=|relative|..\..\..\..\..\..\Users\Alexander\Desktop\B4XFloatTextField
+Module3=|relative|..\B4XMainPage
 NumberOfFiles=3
-NumberOfLibraries=4
-NumberOfModules=2
-Version=9.8
+NumberOfLibraries=6
+NumberOfModules=3
+Version=10
 @EndOfDesignText@
 #Region Project Attributes 
 	#MainFormWidth: 600
