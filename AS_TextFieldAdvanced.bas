@@ -176,7 +176,7 @@ V1.41
 	-Add get ComboBox - Gets the B4XComboBox
 	-Add OpenComboBox
 	-Add Event TitleClick
-V1.42 (nicht öffentlich)
+V1.42
 	-BugFixes
 #End If
 
@@ -653,7 +653,7 @@ Private Sub Base_Resize (Width As Double, Height As Double)
 	xpnl_TrailingIcon.Visible = g_TrailingIcon.Visible
 	xlbl_Prefix.Visible = g_Prefix.Visible
 	xlbl_Suffix.Visible = g_Suffix.Visible
-  
+	
 	Dim TextFieldHeight As Float = Height
 	If g_Title.Visible And m_TitleMode <> "BeforeTextField" Then
 		TextFieldHeight = Height - g_Title.Height
@@ -699,17 +699,17 @@ Private Sub Base_Resize (Width As Double, Height As Double)
   
 	Dim ActionButtonsWidth As Float = 24dip'xpnl_TextFieldBackground.Height/2
 	
-	xlbl_ClearButton.SetLayoutAnimated(0,TextFieldWidth - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap - ActionButtonsWidth - ActionButtonGap,m_TopGap,ActionButtonsWidth,xpnl_TextFieldBackground.Height - m_TopGap*2)
-	xlbl_RevealButton.SetLayoutAnimated(0,TextFieldWidth - IIf(g_TrailingIcon.Visible,TextFieldHeight,0) - ActionButtonGap*IIf(m_ShowClearButton,3,1) - ActionButtonsWidth*IIf(m_ShowClearButton,2,1),m_TopGap,ActionButtonsWidth,xpnl_TextFieldBackground.Height - m_TopGap*2)
+	xlbl_ClearButton.SetLayoutAnimated(0,TextFieldWidth - IIf(g_TrailingIcon.Visible,TextFieldHeight,ActionButtonGap) - ActionButtonsWidth,m_TopGap,ActionButtonsWidth,xpnl_TextFieldBackground.Height - m_TopGap*2)
+	xlbl_RevealButton.SetLayoutAnimated(0,TextFieldWidth - IIf(g_TrailingIcon.Visible,TextFieldHeight,ActionButtonGap*IIf(m_ShowClearButton,3,1)) - ActionButtonsWidth*IIf(m_ShowClearButton,2,1),m_TopGap,ActionButtonsWidth,xpnl_TextFieldBackground.Height - m_TopGap*2)
   
 	xlbl_Prefix.SetLayoutAnimated(0,0,m_TopGap,MeasureTextWidth(xlbl_Prefix.Text,xlbl_Prefix.Font) + g_Prefix.Gap,xpnl_TextFieldBackground.Height - m_TopGap*2)
   
 	'Dim TextField_Left As Float = TextFieldLeft + m_LeftGap + IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0)
 	Dim TextFieldInputLeft As Float = m_LeftGap + IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0)
-	Dim TextField_Width As Float = TextFieldWidth - IIf(m_ShowClearButton,ActionButtonsWidth + ActionButtonGap,0) - IIf(m_ShowRevealButton And m_PasswordField,ActionButtonsWidth + ActionButtonGap*IIf(m_ShowClearButton,3,1),5dip) - IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0) - m_LeftGap * IIf(m_ShowRevealButton Or m_ShowClearButton,1,2)
-  
+	Dim TextField_Width As Float = TextFieldWidth - IIf(m_ShowClearButton,ActionButtonsWidth + IIf(g_TrailingIcon.Visible,0, ActionButtonGap),0) - IIf(m_ShowRevealButton And m_PasswordField,ActionButtonsWidth + ActionButtonGap*IIf(m_ShowClearButton,3,1),5dip) - IIf(xlbl_Prefix.Visible,xlbl_Prefix.Width,0) * IIf(m_ShowRevealButton Or m_ShowClearButton,1,2)
+
 	If g_LeadingIcon.Visible Then TextField_Width = TextField_Width - xpnl_LeadingIcon.Width
-	If g_TrailingIcon.Visible Then TextFieldWidth = TextField_Width - xpnl_TrailingIcon.Width
+	If g_TrailingIcon.Visible Then TextField_Width = TextField_Width - xpnl_TrailingIcon.Width - ActionButtonGap
   
 	If g_LeadingIcon.Visible Then TextFieldInputLeft = TextFieldInputLeft + xpnl_LeadingIcon.Width
   
