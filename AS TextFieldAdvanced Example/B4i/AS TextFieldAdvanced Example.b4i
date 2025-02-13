@@ -9,11 +9,11 @@ Group=Default Group
 Library1=b4xpages
 Library2=icore
 Library3=irandomaccessfile
-Module1=|relative|..\..\AS_TextFieldAdvanced
-Module2=|relative|..\B4XMainPage
+Library4=as_textfieldadvanced
+Module1=|relative|..\B4XMainPage
 NumberOfFiles=3
-NumberOfLibraries=3
-NumberOfModules=2
+NumberOfLibraries=4
+NumberOfModules=1
 Version=8.45
 @EndOfDesignText@
 'Code module

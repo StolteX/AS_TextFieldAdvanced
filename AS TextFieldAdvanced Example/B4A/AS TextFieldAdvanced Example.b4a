@@ -6,18 +6,17 @@ FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 Group=Default Group
-Library1=b4xpages
-Library2=core
-Library3=ime
-Library4=stringutils
-Library5=byteconverter
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
-Module1=|relative|..\..\AS_TextFieldAdvanced
-Module2=|relative|..\B4XMainPage
-Module3=Starter
+Library1=as_textfieldadvanced
+Library2=b4xpages
+Library3=byteconverter
+Library4=core
+Library5=ime
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.DarkTheme)~\n~'End of default text.~\n~
+Module1=|relative|..\B4XMainPage
+Module2=Starter
 NumberOfFiles=3
 NumberOfLibraries=5
-NumberOfModules=3
+NumberOfModules=2
 Version=12.8
 @EndOfDesignText@
 #Region  Project Attributes 
