@@ -178,6 +178,8 @@ V1.41
 	-Add Event TitleClick
 V1.42
 	-BugFixes
+V1.43
+	-BugFix ReadOnly on Multiline
 #End If
 
 #DesignerProperty: Key: Mode, DisplayName: Mode, FieldType: String, DefaultValue: TextField, List: TextField|Button|Multiline|ComboBox
@@ -1094,12 +1096,13 @@ Public Sub setReadOnly(ReadOnly As Boolean)
 		If xtf_TextField.IsInitialized Then xtf_TextField.Enabled = False
 		If xtf_TextFieldPassword.IsInitialized Then xtf_TextFieldPassword.Enabled = False
 		If xtf_Multiline.IsInitialized Then
-			'xtf_Multiline.Enabled = False
 			#If B4I
 			xtf_Multiline.As(TextView).Editable = False
 			#Else If B4A
 			xtf_Multiline.As(EditText).InputType = xtf_Multiline.As(EditText).INPUT_TYPE_NONE
 			xtf_Multiline.As(EditText).SingleLine = False
+			#Else
+			xtf_Multiline.Enabled = False
 			#End If
 		End If
 	Else
