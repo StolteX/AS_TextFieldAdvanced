@@ -14,10 +14,11 @@ Library4=jcore
 Library5=jfx
 Library6=xui views
 Library7=as_textfieldadvanced
-Module1=|relative|..\B4XMainPage
+Module1=|relative|..\..\AS_TextFieldAdvanced
+Module2=|relative|..\B4XMainPage
 NumberOfFiles=3
 NumberOfLibraries=7
-NumberOfModules=1
+NumberOfModules=2
 Version=10
 @EndOfDesignText@
 #Region Project Attributes 

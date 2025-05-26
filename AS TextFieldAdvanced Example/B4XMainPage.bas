@@ -53,7 +53,7 @@ Private Sub B4XPage_Created (Root1 As B4XView)
 	AS_TextFieldAdvanced_5.Suffix.Text = "@gmail.com"
 	AS_TextFieldAdvanced_5.Refresh
 
-
+	AS_TextFieldAdvanced_4.Text = "textfield textfield textfield textfield textfield textfield textfield textfield"
 'Sleep(3000)
 '	AS_TextFieldAdvanced_1.ShowDisplayMissingField("This field is required")
 

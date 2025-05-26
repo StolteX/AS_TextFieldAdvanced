@@ -180,6 +180,8 @@ V1.42
 	-BugFixes
 V1.43
 	-BugFix ReadOnly on Multiline
+V1.44
+	-BugFix
 #End If
 
 #DesignerProperty: Key: Mode, DisplayName: Mode, FieldType: String, DefaultValue: TextField, List: TextField|Button|Multiline|ComboBox
@@ -713,9 +715,9 @@ Private Sub Base_Resize (Width As Double, Height As Double)
 	If g_LeadingIcon.Visible Then TextField_Width = TextField_Width - xpnl_LeadingIcon.Width
 	If g_TrailingIcon.Visible Then TextField_Width = TextField_Width - xpnl_TrailingIcon.Width - ActionButtonGap
   
-	If g_LeadingIcon.Visible Then TextFieldInputLeft = TextFieldInputLeft + xpnl_LeadingIcon.Width
+	TextField_Width = TextField_Width - TextFieldInputLeft 'V1.44
   
-	TextField_Width = TextField_Width - TextFieldInputLeft
+	If g_LeadingIcon.Visible Then TextFieldInputLeft = TextFieldInputLeft + xpnl_LeadingIcon.Width
   
 	xlbl_Prefix.Left = TextFieldInputLeft - xlbl_Prefix.Width
   
